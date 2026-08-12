@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Grade Calculator | School Made Easy</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .calculator {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .input-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #dbe3ef;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 28px;
+            padding: 25px;
+            border-radius: 14px;
+            background: #eff6ff;
+            border: 2px solid #bfdbfe;
+            text-align: center;
+            display: none;
+        }
+
+        .result h2 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .big-number {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .message {
+            color: #475569;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .title h1 {
+                font-size: 30px;
+            }
+
+            .calculator {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">School Made Easy</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gpa.html">GPA</a>
+        <a href="final-grade.html">Final Grade</a>
+        <a href="pomodoro.html">Pomodoro</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="title">
+        <h1>Final Grade Calculator</h1>
+        <p>Find out what you need on your final exam to reach your target grade.</p>
+    </div>
+
+    <div class="calculator">
+
+        <div class="input-group">
+            <label for="currentGrade">Current Grade (%)</label>
+            <input
+                type="number"
+                id="currentGrade"
+                placeholder="Example: 82"
+                min="0"
+                max="100"
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="targetGrade">Desired Final Grade (%)</label>
+            <input
+                type="number"
+                id="targetGrade"
+                placeholder="Example: 90"
+                min="0"
+                max="100"
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="finalWeight">Final Exam Weight (%)</label>
+            <input
+                type="number"
+                id="finalWeight"
+                placeholder="Example: 20"
+                min="1"
+                max="100"
+            >
+        </div>
+
+        <button onclick="calculateFinalGrade()">
+            Calculate Required Final Grade
+        </button>
+
+        <div class="result" id="result">
+            <h2>You Need</h2>
+
+            <div class="big-number" id="requiredGrade">
+                0%
+            </div>
+
+            <p class="message" id="message"></p>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 School Made Easy
+</footer>
+
+<script>
+    function calculateFinalGrade() {
+
+        const currentGrade = Number(
+            document.getElementById("currentGrade").value
+        );
+
+        const targetGrade = Number(
+            document.getElementById("targetGrade").value
+        );
+
+        const finalWeight = Number(
+            document.getElementById("finalWeight").value
+        );
+
+        const result = document.getElementById("result");
+        const requiredGrade = document.getElementById("requiredGrade");
+        const message = document.getElementById("message");
+
+        if (
+            currentGrade < 0 ||
+            currentGrade > 100 ||
+            targetGrade < 0 ||
+            targetGrade > 100 ||
+            finalWeight <= 0 ||
+            finalWeight > 100
+        ) {
+            alert("Please enter valid numbers between 0 and 100.");
+            return;
+        }
+
+        const currentWeight = 100 - finalWeight;
+
+        const needed =
+            (targetGrade - (currentGrade * currentWeight / 100))
+            / (finalWeight / 100);
+
+        result.style.display = "block";
+
+        if (needed <= 0) {
+
+            requiredGrade.textContent = "0%";
+
+            message.textContent =
+                "You have already reached your target grade.";
+
+        } else if (needed > 100) {
+
+            requiredGrade.textContent =
+                needed.toFixed(1) + "%";
+
+            message.textContent =
+                "Unfortunately, you would need more than 100% on the final to reach your target.";
+
+        } else {
+
+            requiredGrade.textContent =
+                needed.toFixed(1) + "%";
+
+            message.textContent =
+                "That's the score you need on your final exam to reach your target grade.";
+        }
+    }
+</script>
+
+</body>
+</html>

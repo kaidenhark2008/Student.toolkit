@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Grade Calculator | Student Toolkit</title>
+
+    <link rel="stylesheet" href="grade.css">
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            Student Toolkit
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#">
+                Tools
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- Main -->
+
+    <main>
+
+        <section class="calculator">
+
+            <div class="calculator-header">
+
+                <h1>
+                    Grade Calculator
+                </h1>
+
+                <p>
+                    Enter your assignments, grades, and weights
+                    to calculate your current class grade.
+                </p>
+
+            </div>
+
+
+
+            <!-- Assignments -->
+
+            <div id="assignments">
+
+                <div class="assignment">
+
+                    <div class="assignment-name">
+
+                        <label>
+                            Assignment
+                        </label>
+
+                        <input
+                            type="text"
+                            class="name"
+                            placeholder="Homework"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Grade %
+                        </label>
+
+                        <input
+                            type="number"
+                            class="grade"
+                            placeholder="90"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Weight %
+                        </label>
+
+                        <input
+                            type="number"
+                            class="weight"
+                            placeholder="20"
+                            min="0"
+                            max="100"
+                            step="0.1"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Buttons -->
+
+            <div class="button-container">
+
+                <button
+                    type="button"
+                    id="addAssignment"
+                    class="secondary-button"
+                >
+                    + Add Assignment
+                </button>
+
+
+                <button
+                    type="button"
+                    id="calculateGrade"
+                    class="primary-button"
+                >
+                    Calculate Grade
+                </button>
+
+            </div>
+
+
+
+            <!-- Weight Warning -->
+
+            <div id="weightMessage"></div>
+
+
+
+            <!-- Result -->
+
+            <div class="result">
+
+                <span class="result-label">
+                    Your Current Grade
+                </span>
+
+
+                <span id="gradeValue">
+                    —
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Student Toolkit
+        </p>
+
+    </footer>
+
+
+
+    <script src="grade.js"></script>
+
+</body>
+
+</html>

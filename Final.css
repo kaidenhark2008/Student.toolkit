@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+}
+
+/* HEADER */
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 22px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* TITLES */
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.title p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+/* CARDS */
+
+.calculator,
+.timer-card {
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* INPUTS */
+
+.input-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #dbe3ef;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #2563eb;
+}
+
+/* BUTTONS */
+
+button {
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* FINAL GRADE */
+
+.calculator button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 8px;
+}
+
+.result {
+    margin-top: 28px;
+    padding: 25px;
+    border-radius: 14px;
+    background: #eff6ff;
+    border: 2px solid #bfdbfe;
+    text-align: center;
+    display: none;
+}
+
+.result h2 {
+    color: #2563eb;
+    margin-bottom: 10px;
+}
+
+.big-number {
+    font-size: 42px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.message {
+    color: #475569;
+    font-size: 16px;
+}
+
+/* POMODORO */
+
+.timer-card {
+    text-align: center;
+}
+
+.mode {
+    display: inline-block;
+    padding: 9px 18px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 90px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin: 20px 0 30px;
+    letter-spacing: 3px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.buttons button {
+    padding: 14px 28px;
+}
+
+.secondary {
+    background: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+.secondary:hover {
+    background: #cbd5e1 !important;
+}
+
+/* POMODORO SETTINGS */
+
+.settings {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.settings div {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.settings label {
+    font-size: 14px;
+}
+
+.settings input {
+    width: 100px;
+    padding: 9px;
+    text-align: center;
+}
+
+.sessions {
+    margin-top: 25px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav a {
+        margin: 0 8px;
+    }
+
+    .title h1 {
+        font-size: 30px;
+    }
+
+    .calculator,
+    .timer-card {
+        padding: 25px;
+    }
+
+    .timer {
+        font-size: 65px;
+    }
+}

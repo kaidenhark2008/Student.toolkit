@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GPA Calculator | Student Toolkit</title>
+
+    <link rel="stylesheet" href="gpa.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            Student Toolkit
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#">Tools</a>
+            <a href="#">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <section class="calculator">
+
+            <div class="calculator-header">
+
+                <h1>GPA Calculator</h1>
+
+                <p>
+                    Enter your grades and course credits to calculate
+                    your GPA.
+                </p>
+
+            </div>
+
+
+            <!-- Courses -->
+            <div id="courses">
+
+                <div class="course">
+
+                    <div class="course-name">
+                        <label>Course 1</label>
+                    </div>
+
+                    <div class="grade-container">
+
+                        <label>Grade</label>
+
+                        <select class="grade">
+
+                            <option value="4.0">A</option>
+                            <option value="3.0">B</option>
+                            <option value="2.0">C</option>
+                            <option value="1.0">D</option>
+                            <option value="0.0">F</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="credits-container">
+
+                        <label>Credits</label>
+
+                        <input
+                            type="number"
+                            class="credits"
+                            placeholder="3"
+                            min="0"
+                            step="0.5"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Buttons -->
+            <div class="button-container">
+
+                <button
+                    type="button"
+                    id="addCourse"
+                    class="secondary-button"
+                >
+                    + Add Course
+                </button>
+
+
+                <button
+                    type="button"
+                    id="calculateGPA"
+                    class="primary-button"
+                >
+                    Calculate GPA
+                </button>
+
+            </div>
+
+
+            <!-- Result -->
+            <div id="result" class="result">
+
+                <span class="result-label">
+                    Your GPA
+                </span>
+
+                <span id="gpaValue">
+                    —
+                </span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Student Toolkit
+        </p>
+
+    </footer>
+
+
+    <script src="gpa.js"></script>
+
+</body>
+
+</html>

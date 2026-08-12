@@ -1,0 +1,118 @@
+/* =========================
+   POMODORO TIMER
+========================= */
+
+.timer-card {
+    background: white;
+    padding: 45px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.mode {
+    display: inline-block;
+    padding: 9px 18px;
+    background: #eff6ff;
+    color: #2563eb;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.timer {
+    font-size: 90px;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin: 20px 0 30px;
+    letter-spacing: 3px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.buttons button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    background: #1d4ed8;
+}
+
+.secondary {
+    background: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+.secondary:hover {
+    background: #cbd5e1 !important;
+}
+
+/* Timer settings */
+
+.settings {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.settings div {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.settings label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.settings input {
+    width: 100px;
+    padding: 9px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* Sessions completed */
+
+.sessions {
+    margin-top: 25px;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .timer-card {
+        padding: 35px 20px;
+    }
+
+    .timer {
+        font-size: 65px;
+    }
+
+    .buttons button {
+        padding: 12px 20px;
+    }
+}

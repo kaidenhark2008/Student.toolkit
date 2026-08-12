@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer | School Made Easy</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 22px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .title {
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #64748b;
+            font-size: 17px;
+        }
+
+        .timer-card {
+            background: white;
+            padding: 45px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .mode {
+            display: inline-block;
+            padding: 9px 18px;
+            background: #eff6ff;
+            color: #2563eb;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            font-size: 90px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin: 20px 0 30px;
+            letter-spacing: 3px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+        }
+
+        .buttons button:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary {
+            background: #e2e8f0 !important;
+            color: #1e293b !important;
+        }
+
+        .secondary:hover {
+            background: #cbd5e1 !important;
+        }
+
+        .settings {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .settings div {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .settings label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .settings input {
+            width: 100px;
+            padding: 9px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .sessions {
+            margin-top: 25px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .title h1 {
+                font-size: 30px;
+            }
+
+            .timer {
+                font-size: 65px;
+            }
+
+            .timer-card {
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        School Made Easy
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gpa.html">GPA</a>
+        <a href="final-grade.html">Final Grade</a>
+        <a href="pomodoro.html">Pomodoro</a>
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <div class="title">
+        <h1>Pomodoro Timer</h1>
+        <p>Stay focused, take breaks, and get more studying done.</p>
+    </div>
+
+    <div class="timer-card">
+
+        <div class="mode" id="mode">
+            Focus Time
+        </div>
+
+        <div class="timer" id="timer">
+            25:00
+        </div>
+
+        <div class="buttons">
+
+            <button onclick="startTimer()">
+                Start
+            </button>
+
+            <button onclick="pauseTimer()" class="secondary">
+                Pause
+            </button>
+
+            <button onclick="resetTimer()" class="secondary">
+                Reset
+            </button>
+
+            <button onclick="skipSession()" class="secondary">
+                Skip
+            </button>
+
+        </div>
+
+        <div class="settings">
+
+            <div>
+                <label for="focusLength">
+                    Focus (minutes)
+                </label>
+
+                <input
+                    type="number"
+                    id="focusLength"
+                    value="25"
+                    min="1"
+                    max="120"
+                >
+            </div>
+
+            <div>
+                <label for="breakLength">
+                    Break (minutes)
+                </label>
+
+                <input
+                    type="number"
+                    id="breakLength"
+                    value="5"
+                    min="1"
+                    max="60"
+                >
+            </div>
+
+        </div>
+
+        <div class="sessions">
+            Sessions completed:
+            <span id="sessions">0</span>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 School Made Easy
+</footer>
+
+<script>
+
+    let timerInterval;
+
+    let isRunning = false;
+
+    let isFocus = true;
+
+    let sessionsCompleted = 0;
+
+    let timeLeft = 25 * 60;
+
+
+    function updateDisplay() {
+
+        const minutes =
+            Math.floor(timeLeft / 60);
+
+        const seconds =
+            timeLeft % 60;
+
+        document.getElementById("timer").textContent =
+            String(minutes).padStart(2, "0") +
+            ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+
+    function startTimer() {
+
+        if (isRunning) {
+            return;
+        }
+
+        isRunning = true;
+
+        timerInterval = setInterval(function () {
+
+            timeLeft--;
+
+            updateDisplay();
+
+            if (timeLeft <= 0) {
+
+                clearInterval(timerInterval);
+
+                isRunning = false;
+
+                if (isFocus) {
+
+                    sessionsCompleted++;
+
+                    document.getElementById("sessions").textContent =
+                        sessionsCompleted;
+                }
+
+                switchMode();
+
+            }
+
+        }, 1000);
+    }
+
+
+    function pauseTimer() {
+
+        clearInterval(timerInterval);
+
+        isRunning = false;
+    }
+
+
+    function resetTimer() {
+
+        clearInterval(timerInterval);
+
+        isRunning = false;
+
+        isFocus = true;
+
+        const focusMinutes =
+            Number(document.getElementById("focusLength").value);
+
+        timeLeft =
+            focusMinutes * 60;
+
+        document.getElementById("mode").textContent =
+            "Focus Time";
+
+        updateDisplay();
+    }
+
+
+    function skipSession() {
+
+        clearInterval(timerInterval);
+
+        isRunning = false;
+
+        switchMode();
+    }
+
+
+    function switchMode() {
+
+        isFocus = !isFocus;
+
+        if (isFocus) {
+
+            const focusMinutes =
+                Number(document.getElementById("focusLength").value);
+
+            timeLeft =
+                focusMinutes * 60;
+
+            document.getElementById("mode").textContent =
+                "Focus Time";
+
+        } else {
+
+            const breakMinutes =
+                Number(document.getElementById("breakLength").value);
+
+            timeLeft =
+                breakMinutes * 60;
+
+            document.getElementById("mode").textContent =
+                "Break Time";
+        }
+
+        updateDisplay();
+    }
+
+
+    document
+        .getElementById("focusLength")
+        .addEventListener("change", function () {
+
+            if (!isRunning && isFocus) {
+
+                timeLeft =
+                    Number(this.value) * 60;
+
+                updateDisplay();
+            }
+
+        });
+
+
+    document
+        .getElementById("breakLength")
+        .addEventListener("change", function () {
+
+            if (!isRunning && !isFocus) {
+
+                timeLeft =
+                    Number(this.value) * 60;
+
+                updateDisplay();
+            }
+
+        });
+
+
+    updateDisplay();
+
+</script>
+
+</body>
+</html>

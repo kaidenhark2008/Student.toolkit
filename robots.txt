@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kaidenhark2008.github.io/Student.toolkit/sitemap.xml
